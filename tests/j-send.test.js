@@ -1,7 +1,7 @@
 'use strict'
 
 const test = require('ava')
-const JSend = require('./../lib/j-send')
+const { JSend } = require('./..')
 
 /**
  * initialisation of JSend

@@ -1,7 +1,7 @@
 'use strict'
 
 const test = require('ava')
-const errorHandlerTest = require('./../lib/middleware-error-handler')
+const { middlewareErrorHandler } = require('./..')
 
 const error413 = {
   message: 'TEST INSERT ERROR HANDLER',
@@ -78,7 +78,7 @@ test('[error-handler] Error handler set with error code', t => {
       t.deepEqual(error, { message: error413.message, errors: error413.errors })
     }
   }
-  errorHandlerTest(error413, req, res, next)
+  middlewareErrorHandler(error413, req, res, next)
 })
 
 test('[error-handler] Error handler set with error statusCode', t => {
@@ -92,7 +92,7 @@ test('[error-handler] Error handler set with error statusCode', t => {
       t.deepEqual(error, { message: errorToTest.message, errors: errorToTest.errors })
     }
   }
-  errorHandlerTest(errorToTest, req, res, next)
+  middlewareErrorHandler(errorToTest, req, res, next)
 })
 
 test('[error-handler] Error handler set with error status', t => {
@@ -106,7 +106,7 @@ test('[error-handler] Error handler set with error status', t => {
       t.deepEqual(error, { message: errorToTest.message, errors: errorToTest.errors })
     }
   }
-  errorHandlerTest(errorToTest, req, res, next)
+  middlewareErrorHandler(errorToTest, req, res, next)
 })
 
 test('[error-handler] Error handler set with error.fields', t => {
@@ -120,7 +120,7 @@ test('[error-handler] Error handler set with error.fields', t => {
       t.deepEqual(error, { message: errorToTest.message, errors: errorToTest.fields })
     }
   }
-  errorHandlerTest(errorToTest, req, res, next)
+  middlewareErrorHandler(errorToTest, req, res, next)
 })
 
 test('[error-handler] Error handler set with error.contents', t => {
@@ -134,7 +134,7 @@ test('[error-handler] Error handler set with error.contents', t => {
       t.deepEqual(error, { message: errorToTest.name, errors: errorToTest.contents })
     }
   }
-  errorHandlerTest(errorToTest, req, res, next)
+  middlewareErrorHandler(errorToTest, req, res, next)
 })
 
 test('[error-handler] Error handler set with error name set null', t => {
@@ -148,7 +148,7 @@ test('[error-handler] Error handler set with error name set null', t => {
       t.deepEqual(error, { message: errorToTest.name, errors: errorToTest.errors })
     }
   }
-  errorHandlerTest(errorToTest, req, res, next)
+  middlewareErrorHandler(errorToTest, req, res, next)
 })
 
 test('[error-handler] Error handler set with only code and message in construct error', t => {
@@ -162,7 +162,7 @@ test('[error-handler] Error handler set with only code and message in construct 
       t.deepEqual(error, { message: errorToTest.message })
     }
   }
-  errorHandlerTest(errorToTest, req, res, next)
+  middlewareErrorHandler(errorToTest, req, res, next)
 })
 
 test('[error-handler] Error handler set with undefined', t => {
@@ -175,7 +175,7 @@ test('[error-handler] Error handler set with undefined', t => {
       t.deepEqual(error, { message: 'error server' })
     }
   }
-  errorHandlerTest(undefined, req, res, next)
+  middlewareErrorHandler(undefined, req, res, next)
 })
 
 test('[error-handler] Error handler set with null', t => {
@@ -188,7 +188,7 @@ test('[error-handler] Error handler set with null', t => {
       t.deepEqual(error, { message: 'error server' })
     }
   }
-  errorHandlerTest(null, req, res, next)
+  middlewareErrorHandler(null, req, res, next)
 })
 
 test('[error-handler] Error handler set with error basic', t => {
@@ -201,5 +201,5 @@ test('[error-handler] Error handler set with error basic', t => {
       t.deepEqual(error, { message: errorBasic.message })
     }
   }
-  errorHandlerTest(errorBasic, req, res, next)
+  middlewareErrorHandler(errorBasic, req, res, next)
 })
