@@ -8,12 +8,14 @@
     "test-watch": "ava -w -v --fail-fast",
     "pretest": "eslint './**/*.js'",
     "test": "nyc --reporter=html --reporter=text ava",
+    "prepublishOnly": "npm run test",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/caloudinou/JSend-format-responce.git"
   },
+  "homepage": "https://github.com/caloudinou/JSend-format-responce",
   "keywords": [
     "jsend",
     "express",
