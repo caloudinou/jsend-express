@@ -2,7 +2,7 @@
   "name": "jsend-format-response",
   "version": "1.0.0",
   "description": "JSend-format-response is implement to expressJs the standard format JSend. it's Simple API JSON Response Format. A JSend-compliant JSON Response Format for HTTP RESTful API. (JSend standard & JSend-extend SAJ)",
-  "main": "j-send.js",
+  "main": "index.js",
   "scripts": {
     "lint-fix": "eslint --fix './**/*.js'",
     "test-watch": "ava -w -v --fail-fast",
