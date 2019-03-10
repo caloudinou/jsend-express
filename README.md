@@ -53,10 +53,8 @@ Once `JSend` is initialized, its middleware is used to extend the response of `e
 */
 const express = require('express')
 
-const routeExample = require('./route-example')
-
 /**
-* init express
+* init your app
 */
 const app = express()
 
@@ -85,16 +83,40 @@ app.use(jSend.middleware.bind(jSend))
 
 
 // your route
-app.use('/example', routeExample)
-
 // ...
 
 ```
 
-#### use method jsend response in controller express
+#### use method JSend response in controller express
+###### example success method
+```js 
+app.get('/', (req, res, next) => {
+    const data = { example: 'example response success' }
+    res.success({ data })
+    // response HTTP / status 200
+    // {
+    //      program: 'appName'
+    //      version: '1.0.0'
+    //      datetime: '2019-03-10T16:50:38.546Z'
+    //      timestamp: 1552236638546
+    //      status: 'success'
+    //      code: 200
+    //      message: 'OK'
+    //      data: { 
+    //         example: 'example response success' 
+    //      }
+    // }
+})
+```
 
 
-###### description of methods JSend
+#### description of head JSend
+...
+
+#### description of body JSend
+...
+
+#### description of methods JSend
 `success`: 
 ```js 
 /**
@@ -102,14 +124,50 @@ app.use('/example', routeExample)
  *   @type function
  *   @param {{ 
  *        status: number | undefined, 
- *        data: Object | null
+ *        data: Object | null,
+ *        message: string | undefined
  *    } | undefined}
+ *   @return {{
+ *       program: string,
+ *       version: string,
+ *       release: string,
+ *       datetime: string,
+ *       timestamp: number,
+ *       status: string,
+ *       code: number,
+ *       message: string,
+ *       data: Object
+ *   }}
  */
 ```
 by default: 
  - `status` = 200
+ - `message` = OK
  - `data` = null
 
+###### example
+```js 
+app.get('/', (req, res, next) => {
+    const status = 201
+    const message = 'example'
+    const data = { example: 'example response success' }
+    res.success({ status, data, message })
+    // response HTTP / status 201
+    // {
+    //      program: 'appName',
+    //      version: '1.0.0',
+    //      release: '42',
+    //      datetime: '2019-03-10T16:50:38.546Z',
+    //      timestamp: 1552236638546,
+    //      status: 'success',
+    //      code: 201,
+    //      message: 'example',
+    //      data: { 
+    //         example: 'example response success' 
+    //      }
+    // }
+})
+```
 
 `partial`: 
 ```js 
@@ -122,7 +180,8 @@ by default:
  *           paginationCount: number, 
  *           paginationPage: number, 
  *           paginationLimit: number 
- *       }
+ *       },
+ *       message: string | undefined
  *       data: Object | null
  *    } | undefined}
  */
