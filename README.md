@@ -63,7 +63,7 @@ const app = express()
 /**
 * require JSend-express is required
 */
-const { JSend } = require('JSend-express')
+const { JSend } = require('jsend-express')
 
 /**
  * init JSend
@@ -94,9 +94,11 @@ app.get('/', (req, res, next) => {
     const data = { example: 'example response success' }
     res.success({ data })
     // response HTTP / status 200
+    // body:
     // {
     //      program: 'appName'
     //      version: '1.0.0'
+    //      release: '42'
     //      datetime: '2019-03-10T16:50:38.546Z'
     //      timestamp: 1552236638546
     //      status: 'success'
