@@ -1,7 +1,7 @@
 {
   "name": "jsend-express",
   "version": "1.0.1",
-  "description": "JSend-format-response is implement to expressJs the standard format JSend. it's Simple API JSON Response Format. A JSend-compliant JSON Response Format for HTTP RESTful API. (JSend standard & JSend-extend SAJ)",
+  "description": "jsend-express is implement to expressJs the standard format JSend. it's Simple API JSON Response Format. A JSend-compliant JSON Response Format for HTTP RESTful API. (JSend standard & JSend-extend SAJ)",
   "main": "index.js",
   "scripts": {
     "lint-fix": "eslint --fix './**/*.js'",
@@ -13,9 +13,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caloudinou/JSend-format-responce.git"
+    "url": "git+https://github.com/caloudinou/jsend-express.git"
   },
-  "homepage": "https://github.com/caloudinou/JSend-format-responce",
+  "homepage": "https://github.com/caloudinou/jsend-express",
   "keywords": [
     "jsend",
     "express",
