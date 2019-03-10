@@ -10,7 +10,7 @@ JSend-express are no dependencies
 
 #### Usage
 
-To use the middleware you simply import the default JSend function. Then use it as you would any other Express.js middleware. This middleware adds a jsend object to the Express.js Response object. It has 3 functions: success(), fail() and error(). 
+To use the middleware you simply import the default JSend function. Then use it as you would any other expressJs middleware. This middleware adds a jsend object to the Express.js Response object. It has 4 functions: `success`, `partial`, `fail` and `error`. 
 
 #### Why use JSend Api ?
 ...
@@ -53,17 +53,19 @@ Once `JSend` is initialized, its middleware is used to extend the response of `e
 */
 const express = require('express')
 
-/**
-* require JSend-express is required
-*/
-const { JSend } = require('JSend-express')
-
 const routeExample = require('./route-example')
 
 /**
 * init express
 */
 const app = express()
+
+
+
+/**
+* require JSend-express is required
+*/
+const { JSend } = require('JSend-express')
 
 /**
  * init JSend
@@ -80,6 +82,8 @@ const jSend = new JSend({ name: 'appName', version: 'X.X.X', release: 'XX' })
  */
 app.use(jSend.middleware.bind(jSend))
 
+
+
 // your route
 app.use('/example', routeExample)
 
@@ -87,6 +91,78 @@ app.use('/example', routeExample)
 
 ```
 
+#### use method jsend response in controller express
+
+
+###### description of methods JSend
+`success`: 
+```js 
+/**
+ *   @description` success response HTTP to type 200 - 300
+ *   @type function
+ *   @param {{ 
+ *        status: number | undefined, 
+ *        data: Object | null
+ *    } | undefined}
+ */
+```
+by default: 
+ - `status` = 200
+ - `data` = null
+
+
+`partial`: 
+```js 
+/**
+ *   @description` success response HTTP with pagination to type 200 - 300
+ *   @type function
+ *   @param {{ 
+ *       status: number | undefined, 
+ *       payload: { 
+ *           paginationCount: number, 
+ *           paginationPage: number, 
+ *           paginationLimit: number 
+ *       }
+ *       data: Object | null
+ *    } | undefined}
+ */
+```
+
+`fail`: 
+```js 
+/**
+ *   @description` error HTTP to type 400
+ *   @type function
+ *   @param {{ 
+ *        status: number | undefined, 
+ *        error: { 
+ *           message: string | undefined, 
+ *           errors: string[] | {key: string, value: string}[] | undefined
+ *        } 
+ *    } | undefined}
+ */
+```
+by default: 
+ - `status` = 400
+ - `message` = invalid request
+
+
+`error`:
+```js 
+/**
+ *   @description` error HTTP to type 500
+ *   @type function
+ *   @param {{ 
+ *        status: number | undefined, 
+ *        error: { 
+ *           message: string | undefined
+ *        } 
+ *    } | undefined}
+ */
+```
+by default: 
+ - `status` = 500
+ - `message` = error server
 
 ###### code coverage :
 
