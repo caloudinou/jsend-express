@@ -1,0 +1,9 @@
+node_modules
+node_modules/*
+example
+.idea
+.idea/*
+.nyc_output
+.nyc_output/*
+coverage
+coverage/*
