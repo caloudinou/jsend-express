@@ -179,6 +179,7 @@ test('[jSend] use partial no param', t => {
         t.deepEqual(obj['x-pagination-count'], undefined)
         t.deepEqual(obj['x-pagination-page'], undefined)
         t.deepEqual(obj['x-pagination-limit'], undefined)
+        return fakeGlobalExpressObject.response
       },
       status: code => {
         t.deepEqual(code, 200)
@@ -236,6 +237,7 @@ test('[jSend] use partial', t => {
         t.deepEqual(obj['x-pagination-count'], payload.paginationCount)
         t.deepEqual(obj['x-pagination-page'], payload.paginationPage)
         t.deepEqual(obj['x-pagination-limit'], payload.paginationLimit)
+        return fakeGlobalExpressObject.response
       },
       status: code => {
         t.deepEqual(code, 201)
