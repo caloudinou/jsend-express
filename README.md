@@ -45,6 +45,7 @@ Once `JSend` is initialized, its middleware is used to extend the response of `e
  - `error` 
 
 #### How use JSend-express
+sample project example: https://github.com/caloudinou/sample-example-jsend-express
 
 #### Example server.js
 ```js
